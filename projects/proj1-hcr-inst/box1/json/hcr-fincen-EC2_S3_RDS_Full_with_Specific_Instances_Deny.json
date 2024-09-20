@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*",
+                "s3:*",
+                "rds:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "ec2:DescribeAccountAttributes"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringNotEquals": {
+                    "ec2:InstanceId": [
+                        "i-01be6a8294074c682",
+                        "i-0eafabdf6a2661fe7",
+                        "i-0ae517a507c61993d",
+                        "i-032b797db314e2d0a"
+                    ]
+                }
+            }
+        }
+    ]
+}

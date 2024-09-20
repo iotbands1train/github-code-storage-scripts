@@ -1,0 +1,4 @@
+$RDPFile = "Y:\projects\proj1-hcr-inst\box4\hcr-fincen-1-dev-devUbuntu.rdp"
+$Password = "greenz%gold4G"
+$EncryptedPassword = ConvertTo-SecureString $Password -AsPlainText -Force | ConvertFrom-SecureString
+Add-Content -Path $RDPFile -Value "password 51:b:$EncryptedPassword"

@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:*",
+                "s3:*",
+                "rds:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringLike": {
+                    "aws:RequestTag/Name": "*HCR-*"
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "ec2:RunInstances",
+                "ec2:StopInstances",
+                "ec2:Create*",
+                "ec2:Modify*",
+                "ec2:Delete*",
+                "s3:CreateBucket",
+                "s3:PutBucketAcl",
+                "s3:PutBucketPolicy",
+                "s3:DeleteBucket"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringNotLike": {
+                    "aws:RequestTag/Name": "*HCR-*"
+                }
+            }
+        }
+    ]
+}
